@@ -1,6 +1,4 @@
 import React from 'react'
-import Button from '@material-ui/core/Button'
-
 import { GoogleLogin } from 'react-google-login'
 import './Login.css'
 
@@ -27,7 +25,7 @@ class Login extends React.Component {
                 </div>
 
                 <div id="main-content">
-                    <h1>M y    C o f f e e</h1>
+                    <h1>M y C o f f e e</h1>
                     <GoogleLogin
                         clientId="1061461036283-hcaopt9772c0sfbel4094csbbvghhe8s.apps.googleusercontent.com"
                         // render={renderProps => (

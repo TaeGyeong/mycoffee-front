@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+대한민국 인허가 데이터 기반, 카페 지도 어플리케이션
+
 ## Available Scripts
 
 In the project directory, you can run:

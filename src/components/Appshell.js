@@ -8,6 +8,7 @@ import Login from './Login'
 const styles = {
     root: {
         flexGrow: 1,
+        display: 'flex'
     },
     menuButton: {
         marginRight: 'auto',
@@ -62,25 +63,25 @@ class Appshell extends React.Component {
                                 <MenuIcon />
                             </IconButton>
                         </AppBar>
-                        <Drawer open={this.state.toggle}>
+                        <Drawer open={this.state.toggle} onClick={this.handleDrawerToggle}>
                             <MenuItem onClick={this.handleDrawerToggle}>
                                 <Link component={RouterLink} to="/">
-                                    Home
+                                    주변 카페지도 (반경 2km)
                                 </Link>
                             </MenuItem>
                             <MenuItem onClick={this.handleDrawerToggle}>
-                                <Link component={RouterLink} to="/texts">
-                                    텍스트관리
+                                <Link component={RouterLink} to="/search">
+                                    카페 검색
                                 </Link>
                             </MenuItem>
                             <MenuItem onClick={this.handleDrawerToggle}>
                                 <Link component={RouterLink} to="/words">
-                                    단어 관리
+                                    찜한 카페 목록
                                 </Link>
                             </MenuItem>
                             <MenuItem onClick={this.handleDrawerToggle}>
                                 <Link component={RouterLink} to="/test">
-                                    지방허가데이터테스트
+                                    추천 카페 보기
                                 </Link>
                             </MenuItem>
                         </Drawer>
