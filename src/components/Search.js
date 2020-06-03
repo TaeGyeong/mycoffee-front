@@ -136,7 +136,7 @@ export default class Search extends React.Component {
                                     <Grid item xs={8}>
                                         <ListItemText primary={item[0][7]} secondary={item[0][6]} />
                                     </Grid>
-                                    <Grid itme xs={2}>
+                                    <Grid item xs={2}>
                                         <ListItemText secondary={getDistanceFromLatLonInKm([clat, clng, item[0][10], item[0][11]]) + ' ' + 'km'} />
                                     </Grid>
                                     <Grid item xs={2}>

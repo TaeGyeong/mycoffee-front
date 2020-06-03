@@ -7,9 +7,6 @@ class Login extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            
-        }
     }
 
     responseGoogle = (response) => {
@@ -28,14 +25,6 @@ class Login extends React.Component {
                     <h1>M y C o f f e e</h1>
                     <GoogleLogin
                         clientId="1061461036283-hcaopt9772c0sfbel4094csbbvghhe8s.apps.googleusercontent.com"
-                        // render={renderProps => (
-                        //     <Button variant="contained" color="primary" 
-                        //         disabled={renderProps.disabled} 
-                        //         onClick={renderProps.onClick}
-                        //     >
-                        //         Get started with google
-                        //     </Button>
-                        // )}
                         buttonText="Get started with google"
                         onFailure={this.props.failFunc}
                         onSuccess={this.props.successFunc}

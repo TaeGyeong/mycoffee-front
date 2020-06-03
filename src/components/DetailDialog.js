@@ -3,9 +3,10 @@ import { Divider, ListItem, Typography, Slide, Button, Dialog, ListItemText, Lis
 import CloseIcon from '@material-ui/icons/Close'
 import axios from 'axios'
 
-///////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 const url = "http://localhost:5432"
-///////////////////////////////////
+const databaseURL = "https://mycoffee-276209.firebaseio.com/"
+//////////////////////////////////////////////////////////////////////
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -16,7 +17,9 @@ export default class DetailDialog extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            priceData: ''
+            priceData: '',
+            like: false,
+            cafeNum: this.props.cafeData["manageNum"]
         }
     }
     
@@ -31,32 +34,44 @@ export default class DetailDialog extends React.Component {
                 })
         })
     }
-
-    componentWillReceiveProps() {
-        // const temp = "3530000-104-2017-00292"
-        this.getPrice(this.props.cafeData["manageNum"])
-            .then(res => {
-                if (res.data.length === 0) {
+    
+    componentDidUpdate(prevProps) {
+        if (this.props.cafeData["manageNum"] !== prevProps.cafeData["manageNum"]) {
+            this.getPrice(this.props.cafeData["manageNum"])
+                .then(res => {
+                    if (res.data.length === 0) {
+                        this.setState({
+                            priceData:"가격정보없음"
+                        })
+                        return
+                    }
+                    let text = ''
+                    res.data.forEach(item => {
+                        text += String(item[1]) + " : "
+                        let price = ''
+                        Array(item[2]).forEach(i => {
+                            price += String(i)
+                        })
+                        text += price + "//"
+                    })
                     this.setState({
-                        priceData:"가격정보없음"
+                        priceData: text,
                     })
-                    return
-                }
-                let text = ''
-                res.data.forEach(item => {
-                    text += String(item[1]) + " : "
-                    let price = ''
-                    Array(item[2]).forEach(i => {
-                        price += String(i)
-                    })
-                    text += price + "//"
                 })
-                this.setState({
-                    priceData: text
-                })
-            })
+        } 
     }
 
+    likeClick = (event) => {
+        if (this.state.like === true) {
+            this.setState({
+                like: false
+            })
+        } else {
+            this.setState({
+                like: true
+            })
+        }
+    }
     
     render() {
         const data = this.props.cafeData
@@ -80,9 +95,17 @@ export default class DetailDialog extends React.Component {
                         <Typography variant="h6">
                             {data["name"]}
                         </Typography>
-                        <Button autoFocus color="inherit" onClick={this.props.closeDialog}>
-                            Like
-                        </Button>
+                        {
+                            this.state.like 
+                            ?
+                            <Button autoFocus style={{marginLeft: '60%'}} color="inherit" variant="outlined" onClick={this.likeClick}>
+                                Dislike
+                            </Button>
+                            :
+                            <Button autoFocus style={{marginLeft: '60%'}} color="inherit" variant="outlined" onClick={this.likeClick}>
+                                Like
+                            </Button>
+                        }
                     </Toolbar>
                 </AppBar>
                 <List>
@@ -97,7 +120,6 @@ export default class DetailDialog extends React.Component {
                     <ListItem>
                         <ListItemText 
                             primary="가격정보"
-                            //secondary={this.state.priceData.split("//").}
                         >
                         </ListItemText>
                     </ListItem>
