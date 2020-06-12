@@ -70,7 +70,6 @@ class Home extends React.Component {
     }
 
     openCafeDialog = (event) => {
-        console.log(event)
         this.setState({
             detailData: event,
             detailOpen: true

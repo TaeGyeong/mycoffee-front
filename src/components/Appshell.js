@@ -25,6 +25,7 @@ class Appshell extends React.Component {
             isLoggedIn: loggedin,
             id: '',
             name: '',
+            email: ''
         }
     }
 
@@ -38,11 +39,13 @@ class Appshell extends React.Component {
         this.setState({
             id: res.googleId,
             name: res.profileObj.name,
+            email: res.profileObj.email,
             isLoggedIn: true,
         })
         window.sessionStorage.setItem('id', res.googleId)
         window.sessionStorage.setItem('name', res.profileObj.name)
         window.sessionStorage.setItem('isLoggedIn', true)
+        window.sessionStorage.setItem('email', res.profileObj.email)
     }
 
     render() {
@@ -70,12 +73,17 @@ class Appshell extends React.Component {
                                 </Link>
                             </MenuItem>
                             <MenuItem onClick={this.handleDrawerToggle}>
+                                <Link component={RouterLink} to="/list">
+                                    카페 목록보기
+                                </Link>
+                            </MenuItem>
+                            <MenuItem onClick={this.handleDrawerToggle}>
                                 <Link component={RouterLink} to="/search">
                                     카페 검색
                                 </Link>
                             </MenuItem>
                             <MenuItem onClick={this.handleDrawerToggle}>
-                                <Link component={RouterLink} to="/words">
+                                <Link component={RouterLink} to="/likes">
                                     찜한 카페 목록
                                 </Link>
                             </MenuItem>
