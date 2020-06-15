@@ -10,6 +10,7 @@ import Divider from '@material-ui/core/Divider'
 import DetailDialog from './DetailDialog'
 
 const url = "http://localhost:5432"
+// const url = "http://http://192.168.0.2:5432"
 
 const getDistanceFromLatLonInKm = (array) => {
     let lat1 = array[0]

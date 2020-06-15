@@ -16,6 +16,7 @@ import DetailDialog from './DetailDialog'
 
 ///////////////////////////////////
 const url = "http://localhost:5432"
+// const url = "http://http://192.168.0.2:5432"
 ///////////////////////////////////
 
 const si_do = [

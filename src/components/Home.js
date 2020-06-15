@@ -8,6 +8,7 @@ import markerImg from './map_marker.svg'
 
 ///////////////////////////////////
 const url = "http://localhost:5432"
+// const url = "http://http://192.168.0.2:5432"
 ///////////////////////////////////
 
 class Home extends React.Component {
