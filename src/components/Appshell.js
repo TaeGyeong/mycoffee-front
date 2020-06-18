@@ -88,7 +88,7 @@ class Appshell extends React.Component {
                                 </Link>
                             </MenuItem>
                             <MenuItem onClick={this.handleDrawerToggle}>
-                                <Link component={RouterLink} to="/test">
+                                <Link component={RouterLink} to="/recommend">
                                     추천 카페 보기
                                 </Link>
                             </MenuItem>
